@@ -20,5 +20,6 @@ void insert_Node_End ( Node ** list );
 void Print_all (Node **list) ;
 void insert_Node_After (Node ** list , unsigned int position ) ;
 unsigned int get_Length (Node ** list );
-
+void Delete_Node_At_Begging (Node ** list ) ;
+void free_list (Node ** list );
 #endif //LINKID_LIST_LINKID_LIST_H
