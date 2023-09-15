@@ -92,7 +92,7 @@ void Print_all (Node **list) {
         }
 
         /*Print the data in Final Node */
-       printf( "%u",mylist->Node_data) ;
+       printf( "%u\n",mylist->Node_data) ;
 
     }
     else{/*Do Nothing*/}
@@ -162,4 +162,55 @@ unsigned int get_Length (Node ** list )
     /*if the function return  0  that means no list  */
     return list_Counter ;
 
+}
+void Delete_Node_At_Begging (Node ** list )
+{
+
+
+    Node *mylist = * list ;
+
+        /*Checking if its Null */
+    if (mylist!=NULL)
+    {
+        /* Getting the Length of the Node */
+        unsigned int List_Length = get_Length(list ) ;
+
+        /* checking if the Node Not Empty  */
+        if(List_Length!= 0  )
+        {
+            /*Make list head pass  first node */
+            *list = mylist->Node_link ;
+
+            /*Cut the fist Node  */
+            mylist->Node_link = NULL ;
+
+            /* Delete its Position in Memory*/
+            free(mylist) ;
+
+        }
+        else {
+
+            printf("Linked list is Empty !\n") ;
+        }
+    }
+    else {/*Do Nothing*/}
+
+}
+
+void free_list (Node ** list )
+{
+    Node *mylist = *list ;
+    Node *Delete_ptr;
+
+    /*Moves through all Nodes */
+    while (mylist->Node_link!= NULL)
+    {
+        /*Points on Node */
+        Delete_ptr = mylist ;
+        mylist = mylist->Node_link ;
+
+        /*Delete Node After Moving to the next One  */
+        free(Delete_ptr) ;
+    }
+    free(mylist) ;
 }
